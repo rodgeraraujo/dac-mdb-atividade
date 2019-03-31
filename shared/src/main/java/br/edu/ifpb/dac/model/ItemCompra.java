@@ -24,6 +24,9 @@ public class ItemCompra implements Serializable {
     private Produto produto;
     private BigDecimal quantidade;
 
+    public ItemCompra() {
+    }
+
     public ItemCompra(Produto produto) {
         this.produto = produto;
     }

@@ -32,19 +32,8 @@ public class Pedido implements Serializable {
 
     public BigDecimal valorPedido() {
         return produtos.parallelStream()
-                .map(ItemPedido::getPreco)
+                .map(ItemCompra::getPreco)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-//        return produtos.parallelStream()
-//                .map((carrinho) -> carrinho.getPreco())
-//                .reduce(BigDecimal.ZERO, (bigDecimal, augend) -> bigDecimal.add(augend));
-
-//        BigDecimal valorTotal = new BigDecimal(0);
-//        produtos.forEach((produto) -> {
-//            valorTotal.add(produto.getPreco());
-//        });
-//        Long collect = produtos.stream()
-//                .flatMap((Produto t) -> Stream.of(t.getPreco()))
-//                .collect(Collectors.reducing();
     }
 
     public int getId() {
