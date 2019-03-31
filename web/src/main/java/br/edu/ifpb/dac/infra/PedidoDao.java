@@ -8,28 +8,28 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class PedidoDao implements PedidoDaoInterface {
+public class PedidoDao {//implements PedidoDaoInterface {
 
     @PersistenceContext
-    private EntityManager manager;
+    private EntityManager em;
 
-    @Override
+//    @Override
     public void salvar(Pedido pedido) {
-        manager.persist(pedido);
+        em.persist(pedido);
     }
 
-    @Override
+//    @Override
     public List<Pedido> todos() {
-        return manager.createQuery("SELECT p FROM Pedido p", Pedido.class).getResultList();
+        return em.createQuery("SELECT p FROM Pedido p", Pedido.class).getResultList();
     }
 
-    @Override
+//    @Override
     public void remover(Pedido pedido) {
-        manager.remove(pedido);
+        em.remove(pedido);
     }
 
-    @Override
+//    @Override
     public Pedido editar(Pedido pedido) {
-        return manager.merge(pedido);
+        return em.merge(pedido);
     }
 }

@@ -25,7 +25,7 @@ public class EnviadorDeEmail implements MessageListener {
 
             if (message.propertyExists("clienteEmail")) {
 
-                if (message.getStringProperty("clienteEmail").equals("messageProcess")) {
+                if (message.getStringProperty("clienteEmail").equals("processamentoCompra")) {
                     enviarEmail(pedido, clienteEmail);
 
                 } else if (message.getStringProperty("clienteEmail").equals("finalizaCompra")) {

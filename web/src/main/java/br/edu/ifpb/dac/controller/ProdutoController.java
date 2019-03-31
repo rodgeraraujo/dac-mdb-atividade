@@ -30,7 +30,6 @@ public class ProdutoController {
         produtoDao.salvar(produto);
         produto = new Produto();
         return null;
-//        return UrlDispatcher.dispatch("index.html");
     }
 
     public Produto getProduto() {

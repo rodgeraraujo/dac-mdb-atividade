@@ -11,29 +11,31 @@ import javax.inject.Inject;
  * @author Rodger
  */
 @Stateless
-public class Clientes {
+public class Comprador {
     
     @Inject
-    private ClienteDao repository;
+    private ClienteDao clienteDao;
     
     public void adicionar(Cliente cliente) {
-        repository.salvar(cliente);
-    }
-
-    public Cliente editar(Cliente cliente) {
-        return repository.editar(cliente);
-    }
-    
-    public void remover(Cliente cliente) {
-        repository.remover(cliente);
-    }
-    
-    public Cliente buscar(String email) {
-        return repository.buscar(email);
+        clienteDao.salvar(cliente);
     }
     
     public List<Cliente> listar() {
-        return repository.todos();
+        return clienteDao.todos();
+    }
+    
+    public Cliente editar(Cliente cliente) {
+        return clienteDao.editar(cliente);
+    }
+    
+    public void remover(Cliente cliente) {
+        clienteDao.remover(cliente);
+    }
+    
+    
+    
+    public Cliente buscar(String email) {
+        return clienteDao.buscar(email);
     }
     
 }

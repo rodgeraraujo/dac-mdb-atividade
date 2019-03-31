@@ -1,7 +1,7 @@
 package br.edu.ifpb.dac.controller;
 
 import br.edu.ifpb.dac.jms.CarrinhoDeCompra;
-import br.edu.ifpb.dac.jms.Clientes;
+import br.edu.ifpb.dac.jms.Comprador;
 import br.edu.ifpb.dac.model.Cliente;
 import br.edu.ifpb.dac.model.ItemCompra;
 import br.edu.ifpb.dac.model.Produto;
@@ -23,21 +23,23 @@ public class CarrinhoController implements Serializable {
 
     @Inject
     private CarrinhoDeCompra carrinho;
+    
     @Inject
-    private Clientes clientes;
-    private String comprador = null;
+    private Comprador comprador;
+    
+    private String clienteComprador = null;
 
-    public String adicionarItem(Produto produto) {
+    public String adicionarProduto(Produto produto) {
         carrinho.adicionarProduto(produto);
         return null;
     }
 
-    public String removerItem(Produto produto) {
+    public String removerProduto(Produto produto) {
         carrinho.removerProduto(produto);
         return null;
     }
 
-    public List<ItemCompra> itensCarrinho() {
+    public List<ItemCompra> itensNoCarrinho() {
         return carrinho.verItensCarrinho();
     }
 
@@ -45,26 +47,19 @@ public class CarrinhoController implements Serializable {
         return carrinho.valorTotalCarrinhoDeCompras();
     }
 
-    public String finalizarCompra() {
-        Cliente cliente = clientes.buscar(comprador);
+    public String concluirCompra() {
+        Cliente cliente = comprador.buscar(clienteComprador);
         carrinho.adicionarCliente(cliente);
-        carrinho.finalizarCompra();
+        carrinho.concluirCompra();
         return null;
     }
 
     public String getComprador() {
-        return comprador;
+        return clienteComprador;
     }
 
-    public void setComprador(String comprador) {
-        this.comprador = comprador;
+    public void setComprador(String clienteComprador) {
+        this.clienteComprador = clienteComprador;
     }
 
-    private void reset() {
-//        HttpSession session = (HttpSession) 
-//                FacesContext.getCurrentInstance()
-//                            .getExternalContext()
-//                            .getSession(false);
-//        session.invalidate();
-    }
 }

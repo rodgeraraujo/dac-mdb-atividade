@@ -8,29 +8,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class ProdutoDao implements ProdutoDaoInterface {
+public class ProdutoDao {//implements ProdutoDaoInterface {
 
     @PersistenceContext
-    private EntityManager manager;
+    private EntityManager em;
 
-    @Override
+//    @Override
     public void salvar(Produto produto) {
-        manager.persist(produto);
+        em.persist(produto);
     }
 
-    @Override
+//    @Override
     public List<Produto> todos() {
-        return manager.createQuery("SELECT p FROM Produto p", Produto.class).getResultList();
+        return em.createQuery("SELECT p FROM Produto p", Produto.class).getResultList();
     }
 
-    @Override
+//    @Override
     public void remover(Produto produto) {
-        manager.remove(produto);
+        em.remove(produto);
     }
 
-    @Override
+//    @Override
     public Produto editar(Produto produto) {
-        return manager.merge(produto);
+        return em.merge(produto);
     }
 
 }

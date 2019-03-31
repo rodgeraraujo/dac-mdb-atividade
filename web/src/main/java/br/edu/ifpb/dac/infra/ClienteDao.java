@@ -8,34 +8,34 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class ClienteDao implements ClienteDaoInterface {
+public class ClienteDao{// implements ClienteDaoInterface {
 
     @PersistenceContext
-    private EntityManager manager;
+    private EntityManager em;
 
-    @Override
+//    @Override
     public void salvar(Cliente cliente) {
-        manager.persist(cliente);
+        em.persist(cliente);
     }
     
-    @Override
+//    @Override
     public List<Cliente> todos() {
-        return manager.createQuery("SELECT c FROM cliente c", Cliente.class).getResultList();
+        return em.createQuery("SELECT c FROM cliente c", Cliente.class).getResultList();
     }
 
-    @Override
+//    @Override
     public void remover(Cliente cliente) {
-        manager.remove(cliente);
+        em.remove(cliente);
     }
     
-    @Override
+//    @Override
     public Cliente editar(Cliente cliente) {
-        return manager.merge(cliente);
+        return em.merge(cliente);
     }
 
-    @Override
+//    @Override
     public Cliente buscar(String email) {
-        return manager.createQuery("SELECT c FROM cliente c WHERE c.email = :email", Cliente.class)
+        return em.createQuery("SELECT c FROM cliente c WHERE c.email = :email", Cliente.class)
                 .setParameter("email", email)
                 .getSingleResult();
     }    

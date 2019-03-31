@@ -50,7 +50,7 @@ public class CarrinhoDeCompra {
         return pedido.getProdutos();
     }
     
-    public String finalizarCompra() {
+    public String concluirCompra() {
         pedidoDao.salvar(pedido);
         processaCompra.analisarCompra(pedido);
         this.pedido = new Pedido();

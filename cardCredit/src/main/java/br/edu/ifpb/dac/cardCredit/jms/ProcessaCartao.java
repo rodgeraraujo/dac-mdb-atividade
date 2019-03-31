@@ -21,7 +21,7 @@ import javax.jms.Topic;
  * @author fernanda
  */
 @MessageDriven(
-        mappedName = "jms/Pedidos",
+        mappedName = "jms/LojaVirtual",
         activationConfig = {
             @ActivationConfigProperty(propertyName = "destinationType",
                     propertyValue = "javax.jms.Topic")
@@ -34,14 +34,13 @@ import javax.jms.Topic;
         })
 public class ProcessaCartao implements MessageListener {
 
-    @Resource(lookup = "jms/Pedidos")
+    @Resource(lookup = "jms/LojaVirtual")
     private Topic topic;
     
     @Inject
     private JMSContext context;
 
-    private final BigDecimal VALOR_LIMITE_CARTAO = new BigDecimal(1500); // R$ 1,500
-//dacmessagedrivebean
+    private final BigDecimal VALOR_LIMITE_CARTAO = new BigDecimal(1500); // R$ 1,50
 
     @Override
     public void onMessage(Message message) {

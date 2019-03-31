@@ -15,7 +15,8 @@ import javax.jms.Topic;
  */
 @Stateless
 public class ProcessaCompra {
-     @Resource(lookup = "jms/Pedidos")
+    
+    @Resource(lookup = "jms/LojaVirtual")
     private Topic topic;
     
     @Inject
@@ -24,7 +25,7 @@ public class ProcessaCompra {
     public void analisarCompra(Pedido pedido) {
         JMSProducer producer = context.createProducer();
         producer.setProperty("destinatario", "cartaoDeCredito");
-        producer.setProperty("clienteEmail", "messageProcess");
+        producer.setProperty("clienteEmail", "processamentoCompra");
         producer.send(topic, pedido);
     }
 }

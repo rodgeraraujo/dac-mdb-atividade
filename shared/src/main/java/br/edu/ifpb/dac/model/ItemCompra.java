@@ -52,7 +52,9 @@ public class ItemCompra implements Serializable {
     }
 
     public BigDecimal getPreco() {
-        return produto.getPreco().multiply(quantidade);
+        return produto
+                .getPreco()
+                .multiply(quantidade);
     }
     
     public void setQuantidade(BigDecimal quantidade) {
