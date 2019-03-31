@@ -12,5 +12,5 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class CarrinhoController implements Serializable {
-
+    
 }
