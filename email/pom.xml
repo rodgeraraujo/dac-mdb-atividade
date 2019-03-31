@@ -7,7 +7,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>edu.ifpb.dac</groupId>
+    <groupId>br.edu.ifpb.dac</groupId>
     <artifactId>email</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>

@@ -9,7 +9,7 @@
 
     <groupId>br.edu.ifpb.dac</groupId>
     <artifactId>cardCredit</artifactId>
-    <version>1</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>cardCredit</name>
