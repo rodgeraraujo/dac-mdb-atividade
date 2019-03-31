@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
  * @author fernanda
  */
 @Entity
-public class Carrinho implements Serializable {
+public class ItemCompra implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -24,7 +24,7 @@ public class Carrinho implements Serializable {
     private Produto produto;
     private BigDecimal quantidade;
 
-    public Carrinho(Produto produto) {
+    public ItemCompra(Produto produto) {
         this.produto = produto;
     }
 
@@ -48,6 +48,10 @@ public class Carrinho implements Serializable {
         return quantidade;
     }
 
+    public BigDecimal getPreco() {
+        return produto.getPreco().multiply(quantidade);
+    }
+    
     public void setQuantidade(BigDecimal quantidade) {
         this.quantidade = quantidade;
     }
