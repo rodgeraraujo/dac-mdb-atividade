@@ -1,4 +1,4 @@
-package edu.ifpb.dac;
+package br.edu.ifpb.dac.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

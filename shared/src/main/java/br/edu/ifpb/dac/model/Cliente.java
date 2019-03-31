@@ -1,4 +1,4 @@
-package edu.ifpb.dac;
+package br.edu.ifpb.dac.model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -51,4 +51,10 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente " + "id=" + id + ", nome=" + nome + ", email=" + email + "\n";
+    }
+
+    
 }
