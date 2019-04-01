@@ -2,68 +2,85 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <title>Loja Virtual</title>
+        <title>Loja Virtual - Lojinha do cap...</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.js"/>
     </head>
-    <body>
+    <body class="container">
 
         <h1>Loja Virtual</h1>
-        <div class="main">
-  <h1>Shopping cart</h1>
-  <h2 class="sub-heading">Free shipping from $100!</h2>
+                     
+        <nav class="navbar navbar-default">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.xhtml">Home</a></li>
+                <li><a href="new-cliente.xhtml">+cliente</a></li>
+                <li><a href="new-produto.xhtml">+produto</a></li>
+              </ul>
+          </nav>
+        
+       
+        <input type="button" value="+Produto"/>
+        <input type="button" value="+Cliente"/>
+        
+        <br/><br/>
+        
+        
+        <h3>Lista de produtos</h3>
+        
+         <div class="panel panel-default">
+            <div class="panel-heading">Novo produto</div>
+            <div class="panel-body">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Descriçao</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="item"/>
+                  </div>
+                </div>
 
-  <section class="shopping-cart">
-    <ol class="ui-list shopping-cart--list" id="shopping-cart--list">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Preço</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="price"/>
+                  </div>
+                </div>
 
-      <script id="shopping-cart--list-item-template" type="text/template">
-        <li class="_grid shopping-cart--list-item">
-          <div class="_column product-image">
-            <img class="product-image--img" src="{{=img}}" alt="Item image" />
-          </div>
-          <div class="_column product-info">
-            <h4 class="product-name">nome</h4>
-            <p class="product-desc">descriçao</p>
-            <div class="price product-single-price">$preco</div>
-          </div>
-          <div class="_column product-modifiers" data-product-price="">
-            <div class="_grid">
-              <button class="_btn _column product-subtract">-</button>
-              <div class="_column product-qty">0</div>
-              <button class="_btn _column product-plus">+</button>
+<!--                <div clas="form-group">
+                  <label class="col-sm-2 control-label">Quantity</label>
+                  <div class="col-sm-10">
+                    <input type="range" min="1" max="500" ng-model="quantity"/> {{quantity}}
+                  </div>
+                </div>-->
+
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                     <input type="submit" class="btn btn-default" value="Salvar" />
+                  </div>
+                </div>
+              </form>
+
             </div>
-            <button class="_btn entypo-trash product-remove">Remove</button>
-            <div class="price product-total-price">$0.00</div>
           </div>
-        </li>
-      </script>
 
-    </ol>
-
-    <footer class="_grid cart-totals">
-      <div class="_column subtotal" id="subtotalCtr">
-        <div class="cart-totals-key">Subtotal</div>
-        <div class="cart-totals-value">$0.00</div>
-      </div>
-      <div class="_column shipping" id="shippingCtr">
-        <div class="cart-totals-key">Shipping</div>
-        <div class="cart-totals-value">$0.00</div>
-      </div>
-      <div class="_column taxes" id="taxesCtr">
-        <div class="cart-totals-key">Taxes (6%)</div>
-        <div class="cart-totals-value">$0.00</div>
-      </div>
-      <div class="_column total" id="totalCtr">
-        <div class="cart-totals-key">Total</div>
-        <div class="cart-totals-value">$0.00</div>
-      </div>
-      <div class="_column checkout">
-        <button class="_btn checkout-btn entypo-forward">Checkout</button>
-      </div>
-    </footer>
-
-  </section>
-</div>
-        
-        
+          <table class="table" ng-show="cartData.length > 0">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th colspan="2">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in cartData">
+                <td>{{item.name}}</td>
+                <td>{{item.price | currency}}</td>
+                <td>{{item.quantity}}</td>
+                <td>
+                  <button ng-click="remove($index)" class="btn btn-default">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>    
     </body>
 </html>

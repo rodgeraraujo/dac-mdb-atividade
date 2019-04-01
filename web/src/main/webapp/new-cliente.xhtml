@@ -1,12 +1,78 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Cadastrar novo cliente</title>
-    </h:head>
-    <h:body>
-        Cadastrar novo cliente
-    </h:body>
-</html>
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Cadastrar novo cliente na Loja Virtual - Lojinha do cap...</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.js"/>
+    </head>
+    <body class="container">
 
+        <h1>Loja Virtual</h1>
+                     
+        <nav class="navbar navbar-default">
+              <ul class="nav navbar-nav">
+                <li><a href="index.xhtml">Home</a></li>
+                <li class="active"><a href="new-cliente.xhtml">+cliente</a></li>
+                <li><a href="new-produto.xhtml">+produto</a></li>
+              </ul>
+          </nav>
+        <br/><br/>
+        
+         <div class="panel panel-default">
+            <div class="panel-heading">Novo cliente</div>
+            <div class="panel-body">
+                <h:form class="form-horizontal">
+                  <!--<form class="form-horizontal">-->
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Nome</label>
+                      <div class="col-sm-10">
+                          <h:inputText class="form-control" id="nome" 
+                                       value="#{clienteController.cliente.nome}" required="true"/>
+                        <!--<input type="text" class="form-control" ng-model="item"/>-->
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Email</label>
+                      <div class="col-sm-10">
+                        <h:inputText class="form-control" id="email" 
+                                     value="#{clienteController.cliente.email}" required="true"/>
+                        <!--<input type="email" class="form-control" ng-model="price"/>-->
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                          <h:commandButton action="#{clienteController.salvarCliente()}" 
+                             value="Salvar" />
+                         <!--<input type="submit" class="btn btn-default" value="Salvar" />-->
+                      </div>
+                    </div>
+                </h:form>
+            </div>
+          </div>
+
+<!--          <table class="table" ng-show="cartData.length > 0">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th colspan="2">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in cartData">
+                <td>{{item.name}}</td>
+                <td>{{item.price | currency}}</td>
+                <td>{{item.quantity}}</td>
+                <td>
+                  <button ng-click="remove($index)" class="btn btn-default">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>    -->
+    </body>
+</html>

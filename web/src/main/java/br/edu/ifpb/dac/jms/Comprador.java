@@ -8,7 +8,8 @@ import javax.inject.Inject;
 
 /**
  *
- * @author Rodger
+ * @author rodger
+ * @author fernanda
  */
 @Stateless
 public class Comprador {
