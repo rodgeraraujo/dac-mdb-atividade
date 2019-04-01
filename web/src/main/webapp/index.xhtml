@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <head>
         <title>Loja Virtual - Lojinha do cap...</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,17 +21,24 @@
                 <li><a href="new-produto.xhtml">+produto</a></li>
               </ul>
           </nav>
+           
+        <br/><br/>     
         
-       
-        <input type="button" value="+Produto"/>
-        <input type="button" value="+Cliente"/>
+        <h3>Informaçoes do Carrinho</h3>
+        <h4><h:outputText value="Valor total R$: #{carrinhoController.valorCompra()}"/></h4>
+        <h:form>
+            <label for="comprador">
+                E-mail do cliente 
+                <h:inputText class="form-control" id="comprador" value="#{carrinhoController.comprador}" />
+            </label>
+            <h:commandButton value="Finalizar Compra" action="#{carrinhoController.finalizarCompra()}"/>
+            <p>*Para concluir a compra, digite o email de um cliente cadastrado e clique em finalizar</p>
+        </h:form>
         
-        <br/><br/>
-        
-        
+          <hr/>
         <h3>Lista de produtos</h3>
         
-         <div class="panel panel-default">
+<!--         <div class="panel panel-default">
             <div class="panel-heading">Novo produto</div>
             <div class="panel-body">
               <form class="form-horizontal">
@@ -46,12 +56,12 @@
                   </div>
                 </div>
 
-<!--                <div clas="form-group">
+                <div clas="form-group">
                   <label class="col-sm-2 control-label">Quantity</label>
                   <div class="col-sm-10">
                     <input type="range" min="1" max="500" ng-model="quantity"/> {{quantity}}
                   </div>
-                </div>-->
+                </div>
 
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
@@ -61,26 +71,64 @@
               </form>
 
             </div>
-          </div>
-
-          <table class="table" ng-show="cartData.length > 0">
+          </div>-->
+          
+          <table class="table">
             <thead>
               <tr>
-                <th>Item</th>
-                <th>Price</th>
-                <th colspan="2">Quantity</th>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th colspan="2">Açoes</th>
               </tr>
             </thead>
-            <tbody>
-              <tr ng-repeat="item in cartData">
-                <td>{{item.name}}</td>
-                <td>{{item.price | currency}}</td>
-                <td>{{item.quantity}}</td>
-                <td>
-                  <button ng-click="remove($index)" class="btn btn-default">Remove</button>
-                </td>
-              </tr>
-            </tbody>
+              <c:forEach items="#{produtoController.todosOsProdutos()}" var="p">
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td>#{p.descricao}</td>
+                    <td>#{p.preco}</td>
+                    <td>
+                        <h:form>
+                            <h:commandButton value="Adicionar ao Carrinho" 
+                                             action="#{carrinhoController.adicionarProduto(p)}" />
+                        </h:form>
+                      <!--<button ng-click="remove($index)" class="btn btn-default">Remove</button>-->
+                    </td>
+                  </tr>
+                </tbody>
+            </c:forEach>
           </table>    
+          
+            <hr/>
+           
+            <h3>Carrinho de compras do cliente</h3>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Descriçao</th>
+                    <th>Preço</th>
+                    <th colspan="2">Açoes</th>
+                  </tr>
+                </thead>
+                <c:forEach items="#{carrinhoController.itensNoCarrinho()}" var="item">
+                    <tbody>
+                      <tr>
+                        <td></td>
+                        <td>#{item.produto.descricao}</td>
+                        <td>#{item.produto.preco}</td>
+                        <td>#{item.quantidade}</td>
+                        <td>
+                            <h:form>
+                                <h:commandButton value="Remover" 
+                                                 action="#{carrinhoController.removerProduto(item.produto)}"/>
+                            </h:form>
+                          <!--<button ng-click="remove($index)" class="btn btn-default">Remove</button>-->
+                        </td>
+                      </tr>
+                    </tbody>
+                </c:forEach>
+              </table>   
     </body>
 </html>

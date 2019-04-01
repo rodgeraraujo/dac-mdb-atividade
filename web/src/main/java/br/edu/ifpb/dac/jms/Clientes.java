@@ -12,7 +12,7 @@ import javax.inject.Inject;
  * @author fernanda
  */
 @Stateless
-public class Comprador {
+public class Clientes {
     
     @Inject
     private ClienteDao clienteDao;

@@ -22,41 +22,59 @@
         
         <br/><br/>
         
-        
-         <div class="panel panel-default">
+        <div class="panel panel-default">
             <div class="panel-heading">Novo produto</div>
             <div class="panel-body">
-              <form class="form-horizontal">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Descriçao</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" ng-model="item"/>
-                  </div>
-                </div>
+                <h:form class="form-horizontal">
+                  <!--<form class="form-horizontal">-->
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Descriçao</label>
+                      <div class="col-sm-10">
+                          <h:inputText class="form-control" id="nome" 
+                                       value="#{produtoController.produto.descricao}" required="true"/>
+                        <!--<input type="text" class="form-control" ng-model="item"/>-->
+                      </div>
+                    </div>
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">Preço</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" ng-model="price"/>
-                  </div>
-                </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Preço</label>
+                      <div class="col-sm-10">
+                        <h:inputText class="form-control" id="email" 
+                                     value="#{produtoController.produto.preco}" required="true"/>
+                        <!--<input type="email" class="form-control" ng-model="price"/>-->
+                      </div>
+                    </div>
 
-<!--                <div clas="form-group">
-                  <label class="col-sm-2 control-label">Quantity</label>
-                  <div class="col-sm-10">
-                    <input type="range" min="1" max="500" ng-model="quantity"/> {{quantity}}
-                  </div>
-                </div>-->
-
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                     <input type="submit" class="btn btn-default" value="Salvar" />
-                  </div>
-                </div>
-              </form>
-
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                          <h:commandButton action="#{produtoController.adicionarProduto()}" 
+                             value="Salvar" />
+                         <!--<input type="submit" class="btn btn-default" value="Salvar" />-->
+                      </div>
+                    </div>
+                </h:form>
             </div>
           </div>
+
+<!--          <table class="table" ng-show="cartData.length > 0">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th colspan="2">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in cartData">
+                <td>{{item.name}}</td>
+                <td>{{item.price | currency}}</td>
+                <td>{{item.quantity}}</td>
+                <td>
+                  <button ng-click="remove($index)" class="btn btn-default">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>    -->
 
     </body>
 </html>

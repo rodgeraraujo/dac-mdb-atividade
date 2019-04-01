@@ -6,6 +6,7 @@ import br.edu.ifpb.dac.infra.ProdutoDao;
 import java.util.Collections;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -14,7 +15,8 @@ import javax.inject.Named;
  * @author rodger
  * @author fernanda
  */
-@Named
+@ManagedBean
+//@Named
 @RequestScoped
 public class ProdutoController {
     
@@ -27,6 +29,7 @@ public class ProdutoController {
     }
     
     public String adicionarProduto() {
+        System.out.println("produto" + produto.toString());
         produtoDao.salvar(produto);
         produto = new Produto();
         return null;
